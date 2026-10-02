@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.0.0",
+  "graph": {
+    "nodes": [
+      {
+        "id": "inside",
+        "kind": "component",
+        "attributes": {
+          "enabled": true,
+          "value": 10,
+          "unit": "ohm"
+        },
+        "ports": [],
+        "groupId": "child",
+        "label": {
+          "kind": "text",
+          "schemaVersion": "1.0.0",
+          "language": "es",
+          "value": {
+            "kind": "localized-text",
+            "schemaVersion": "1.0.0",
+            "defaultLocale": "es",
+            "translations": {
+              "es": {
+                "text": "¿Cuánto es dos más dos?"
+              },
+              "en": {
+                "text": "What is two plus two?"
+              },
+              "ar": {
+                "text": "كم يساوي اثنان زائد اثنين؟"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "outside",
+        "kind": "component",
+        "attributes": {
+          "enabled": true,
+          "value": 10,
+          "unit": "ohm"
+        },
+        "ports": [],
+        "groupId": null,
+        "label": {
+          "kind": "text",
+          "schemaVersion": "1.0.0",
+          "language": "es",
+          "value": {
+            "kind": "localized-text",
+            "schemaVersion": "1.0.0",
+            "defaultLocale": "es",
+            "translations": {
+              "es": {
+                "text": "¿Cuánto es dos más dos?"
+              },
+              "en": {
+                "text": "What is two plus two?"
+              },
+              "ar": {
+                "text": "كم يساوي اثنان زائد اثنين؟"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "boundary",
+        "directed": false,
+        "source": {
+          "nodeId": "inside",
+          "portId": null
+        },
+        "target": {
+          "nodeId": "outside",
+          "portId": null
+        },
+        "attributes": {
+          "weight": 1
+        }
+      }
+    ],
+    "groups": [
+      {
+        "id": "parent",
+        "parentId": "child",
+        "attributes": {}
+      },
+      {
+        "id": "child",
+        "parentId": "parent",
+        "attributes": {},
+        "label": {
+          "kind": "text",
+          "schemaVersion": "1.0.0",
+          "language": "es",
+          "value": {
+            "kind": "localized-text",
+            "schemaVersion": "1.0.0",
+            "defaultLocale": "es",
+            "translations": {
+              "es": {
+                "text": "¿Cuánto es dos más dos?"
+              },
+              "en": {
+                "text": "What is two plus two?"
+              },
+              "ar": {
+                "text": "كم يساوي اثنان زائد اثنين؟"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

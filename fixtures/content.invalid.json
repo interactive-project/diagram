@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "1.0.0",
+  "graph": {
+    "nodes": [
+      {
+        "id": "idea",
+        "kind": "component",
+        "attributes": {
+          "enabled": true,
+          "value": 10,
+          "unit": "ohm"
+        },
+        "ports": [],
+        "groupId": null,
+        "label": {
+          "kind": "text",
+          "schemaVersion": "1.0.0",
+          "language": "es",
+          "value": {
+            "kind": "localized-text",
+            "schemaVersion": "1.0.0",
+            "defaultLocale": "es",
+            "translations": {
+              "es": {
+                "text": 42
+              },
+              "en": {
+                "text": "What is two plus two?"
+              },
+              "ar": {
+                "text": "كم يساوي اثنان زائد اثنين؟"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "related",
+        "kind": "component",
+        "attributes": {
+          "enabled": true,
+          "value": 10,
+          "unit": "ohm"
+        },
+        "ports": [],
+        "groupId": null,
+        "label": {
+          "kind": "text",
+          "schemaVersion": "1.0.0",
+          "language": "es",
+          "value": {
+            "kind": "localized-text",
+            "schemaVersion": "1.0.0",
+            "defaultLocale": "es",
+            "translations": {
+              "es": {
+                "text": "¿Cuánto es dos más dos?"
+              },
+              "en": {
+                "text": "What is two plus two?"
+              },
+              "ar": {
+                "text": "كم يساوي اثنان زائد اثنين؟"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "relation",
+        "directed": false,
+        "source": {
+          "nodeId": "idea",
+          "portId": null
+        },
+        "target": {
+          "nodeId": "related",
+          "portId": null
+        },
+        "attributes": {
+          "weight": 1
+        }
+      }
+    ],
+    "groups": []
+  }
+}
