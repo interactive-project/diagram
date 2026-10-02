@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "1.0.0",
+  "graph": {
+    "nodes": [
+      {
+        "id": "battery",
+        "kind": "component",
+        "attributes": {
+          "enabled": true,
+          "value": 10,
+          "unit": "ohm"
+        },
+        "ports": [
+          {
+            "id": "batteryOut",
+            "role": "output",
+            "dataType": "electric"
+          }
+        ],
+        "groupId": null,
+        "label": {
+          "kind": "text",
+          "schemaVersion": "1.0.0",
+          "language": "es",
+          "value": {
+            "kind": "localized-text",
+            "schemaVersion": "1.0.0",
+            "defaultLocale": "es",
+            "translations": {
+              "es": {
+                "text": "¿Cuánto es dos más dos?"
+              },
+              "en": {
+                "text": "What is two plus two?"
+              },
+              "ar": {
+                "text": "كم يساوي اثنان زائد اثنين؟"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "resistor",
+        "kind": "component",
+        "attributes": {
+          "enabled": true,
+          "value": 10,
+          "unit": "ohm"
+        },
+        "ports": [
+          {
+            "id": "resistorIn",
+            "role": "input",
+            "dataType": "electric"
+          }
+        ],
+        "groupId": null,
+        "label": {
+          "kind": "text",
+          "schemaVersion": "1.0.0",
+          "language": "es",
+          "value": {
+            "kind": "localized-text",
+            "schemaVersion": "1.0.0",
+            "defaultLocale": "es",
+            "translations": {
+              "es": {
+                "text": "¿Cuánto es dos más dos?"
+              },
+              "en": {
+                "text": "What is two plus two?"
+              },
+              "ar": {
+                "text": "كم يساوي اثنان زائد اثنين؟"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "wire",
+        "directed": true,
+        "source": {
+          "nodeId": "battery",
+          "portId": "batteryOut"
+        },
+        "target": {
+          "nodeId": "resistor",
+          "portId": "resistorIn"
+        },
+        "attributes": {
+          "weight": 1
+        }
+      }
+    ],
+    "groups": []
+  },
+  "view": {
+    "positions": {
+      "battery": {
+        "x": 0,
+        "y": 0
+      },
+      "resistor": {
+        "x": 100,
+        "y": 0
+      },
+      "missing": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "layoutHints": {
+      "algorithm": "interactive-project/manual",
+      "direction": "left-right"
+    }
+  }
+}

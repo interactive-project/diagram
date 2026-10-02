@@ -1,0 +1,317 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/interactive-project/diagram/blob/main/schemas/diagram-activity.v1.schema.json",
+  "title": "Portable diagram semantic graph and optional view v1",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "graph": {
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "maxItems": 512,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+              },
+              "kind": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+              },
+              "attributes": {
+                "type": "object",
+                "maxProperties": 32,
+                "propertyNames": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                },
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ],
+                  "maxLength": 4000
+                }
+              },
+              "ports": {
+                "type": "array",
+                "maxItems": 16,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                    },
+                    "role": {
+                      "enum": [
+                        "input",
+                        "output",
+                        "bidirectional"
+                      ]
+                    },
+                    "dataType": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "role",
+                    "dataType"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "groupId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "label": {
+                "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+              }
+            },
+            "required": [
+              "id",
+              "kind",
+              "attributes",
+              "ports",
+              "groupId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "edges": {
+          "type": "array",
+          "maxItems": 1000,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+              },
+              "directed": {
+                "type": "boolean"
+              },
+              "source": {
+                "type": "object",
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  "portId": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "nodeId",
+                  "portId"
+                ],
+                "additionalProperties": false
+              },
+              "target": {
+                "type": "object",
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  "portId": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "nodeId",
+                  "portId"
+                ],
+                "additionalProperties": false
+              },
+              "attributes": {
+                "type": "object",
+                "maxProperties": 32,
+                "propertyNames": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                },
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ],
+                  "maxLength": 4000
+                }
+              },
+              "label": {
+                "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+              }
+            },
+            "required": [
+              "id",
+              "directed",
+              "source",
+              "target",
+              "attributes"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "groups": {
+          "type": "array",
+          "maxItems": 128,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+              },
+              "attributes": {
+                "type": "object",
+                "maxProperties": 32,
+                "propertyNames": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                },
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "number",
+                    "boolean",
+                    "null"
+                  ],
+                  "maxLength": 4000
+                }
+              },
+              "parentId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "label": {
+                "$ref": "https://github.com/interactive-project/content-node/blob/main/schemas/content-node.v1.schema.json"
+              }
+            },
+            "required": [
+              "id",
+              "attributes",
+              "parentId"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "nodes",
+        "edges",
+        "groups"
+      ],
+      "additionalProperties": false
+    },
+    "view": {
+      "type": "object",
+      "properties": {
+        "positions": {
+          "type": "object",
+          "maxProperties": 512,
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._-]{0,63}$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": -1000000,
+                "maximum": 1000000
+              },
+              "y": {
+                "type": "number",
+                "minimum": -1000000,
+                "maximum": 1000000
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "layoutHints": {
+          "type": "object",
+          "properties": {
+            "algorithm": {
+              "type": "string",
+              "maxLength": 128,
+              "pattern": "^[a-z0-9][a-z0-9.-]*/[a-z0-9][a-z0-9._-]*$"
+            },
+            "direction": {
+              "enum": [
+                "left-right",
+                "right-left",
+                "top-bottom",
+                "bottom-top"
+              ]
+            }
+          },
+          "required": [
+            "algorithm",
+            "direction"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "positions"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "graph"
+  ],
+  "additionalProperties": false
+}
